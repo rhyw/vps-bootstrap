@@ -1,2 +1,10 @@
 ---
-# tasks file for fedora
+# tasks file for vps
+- name: Perform system-wide bootstrap configuration
+  hosts: fedora
+  become: true
+  vars_files:
+    - ../vaults/secrets.yml
+  tasks:
+    - name: bootstrap run
+      import_tasks: bootstrap.yml
