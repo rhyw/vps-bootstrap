@@ -3,3 +3,13 @@
   yum:
     name: '*'
     state: latest
+
+- name: Install Git, Tmux, and other packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - git
+    - tmux
+    - vim
+    - htop

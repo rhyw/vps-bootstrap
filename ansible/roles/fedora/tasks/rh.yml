@@ -1,0 +1,5 @@
+- name: Download CA certificate from URL
+  get_url:
+    url: "{{ root_ca_url }}"
+    dest: "{{ root_ca_dest_location }}"
+  notify: Update CA Trust

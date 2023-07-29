@@ -8,3 +8,8 @@
   tasks:
     - name: bootstrap run
       import_tasks: bootstrap.yml
+    - name: RH internal
+      import_tasks: rh.yml
+  handlers:
+    - name: Update CA Trust
+      command: update-ca-trust

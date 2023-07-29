@@ -6,7 +6,7 @@ help:
 
 play: ### run playbook roles/fedora/tasks/main.yml
 	@cd ansible && \
-	ansible-playbook roles/fedora/tasks/main.yml
+	ansible-playbook --vault-password-file vault_password roles/fedora/tasks/main.yml
 
 ping: ### ping all hosts defined in inventory
 	@cd ansible && \
