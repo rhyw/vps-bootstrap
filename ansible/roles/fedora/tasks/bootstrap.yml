@@ -14,3 +14,18 @@
     - tmux
     - vim
     - htop
+
+- name: Add Git Prompt to Bashrc
+  blockinfile:
+    path: ~/.bashrc
+    marker: "# Ansible managed: Start Git Prompt"
+    insertbefore: BOF
+    block: |
+      # Function to retrieve the current Git branch
+      function parse_git_branch() {
+          git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+      }
+
+      # Define your custom PS1 (prompt) with Git branch
+      export PS1='\[\e[32m\]\u@\h:\[\e[33m\]\w\[\e[36m\]$(parse_git_branch)\[\e[0m\]\$ '
+    marker_end: "# Ansible managed: End Git Prompt"
