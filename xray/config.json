@@ -24,6 +24,18 @@
             "settings": {}
         },
         {
+            "tag": "netflix_proxy",
+            "protocol": "socks",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "127.0.0.1",
+                        "port": 40000
+                    }
+                ]
+            }
+        },
+        {
             "protocol": "blackhole",
             "settings": {},
             "tag": "blocked"
@@ -48,6 +60,14 @@
     },
     "routing": {
         "rules": [
+            {
+                "type": "field",
+                "outboundTag": "netflix_proxy",
+                "domain": [
+                    "geosite:netflix",
+                    "geosite:disney"
+                ]
+            },
             {
                 "inboundTag": [
                     "api"
